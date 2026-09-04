@@ -1,0 +1,103 @@
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-brand">
+
+      <img
+        src="/images/logo.jpeg"
+        alt="SmartResponse Youth Foundation Logo">
+
+      <h2>SmartResponse</h2>
+
+      <p class="slogan">Save the Dignity.</p>
+
+      <p>
+        Empowering young people and communities to create
+        meaningful change.
+      </p>
+
+      <div class="socials">
+
+        <a
+          [href]="site.links.whatsappChannel"
+          target="_blank"
+          rel="noopener"
+          aria-label="WhatsApp channel"
+        >
+          WhatsApp Channel
+        </a>
+
+        <a
+          [href]="site.links.podcast"
+          target="_blank"
+          rel="noopener"
+          aria-label="Podcast on Spotify"
+        >
+          Podcast
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-links">
+
+      <h3>Quick Links</h3>
+
+      <a routerLink="/">Home</a>
+      <a routerLink="/about">About Us</a>
+      <a routerLink="/services">Services</a>
+      <a routerLink="/blog">Blog</a>
+      <a routerLink="/volunteer">Volunteer</a>
+      <a routerLink="/contact">Contact</a>
+
+    </div>
+
+    <div class="footer-links">
+
+      <h3>Get Involved</h3>
+
+      <a routerLink="/donate">Donate</a>
+      <a routerLink="/shop">Shop to Support</a>
+      <a routerLink="/volunteer">Volunteer</a>
+      <a routerLink="/contact">Partner With Us</a>
+      <a routerLink="/contact">Contact Us</a>
+
+    </div>
+
+    <div class="footer-give">
+
+      <h3>Give by Transfer</h3>
+
+      <p class="acct-name">{{ site.bank.accountName }}</p>
+
+      <p class="acct">
+        <strong>{{ ngnAccount.number }}</strong>
+        <span>{{ ngnAccount.currency }}</span>
+        <strong class="bank-name">{{ site.bank.name }}</strong>
+      </p>
+
+      <a routerLink="/donate" class="all-accounts">
+        USD, EUR &amp; GBP accounts →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    <p>
+      © {{ year }} {{ site.organisation.name }}. All Rights Reserved.
+      <span class="reg">{{ site.organisation.registration }}</span>
+    </p>
+
+    <div class="legal-links">
+      <a routerLink="/terms">Terms &amp; Conditions</a>
+      <a routerLink="/privacy">Privacy Policy</a>
+    </div>
+
+  </div>
+
+</footer>

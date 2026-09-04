@@ -1,0 +1,192 @@
+<section class="page-hero">
+
+  <span>CONTACT US</span>
+
+  <h1>Let's start a conversation.</h1>
+
+  <p>
+    Have a question, idea, partnership opportunity or want to get involved?
+    We'd love to hear from you.
+  </p>
+
+</section>
+
+<section class="contact">
+
+  <div class="contact-info">
+
+    <span>GET IN TOUCH</span>
+
+    <h2>We would love to hear from you.</h2>
+
+    <p>
+      Reach out to SmartResponse Youth Foundation and let's discuss
+      how we can work together to create positive impact.
+    </p>
+
+    <div class="contact-item">
+      <strong>Email</strong>
+      <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+    </div>
+
+    <div class="contact-item">
+      <strong>Phone</strong>
+      <span>{{ site.contact.phone }}</span>
+    </div>
+
+    <div class="contact-item">
+      <strong>Location</strong>
+      <span>{{ site.contact.location }}</span>
+    </div>
+
+    <div class="contact-item">
+      <strong>Registration</strong>
+      <span>{{ site.organisation.registration }}</span>
+    </div>
+
+    <div class="socials">
+
+      <a
+        [href]="site.links.whatsappChannel"
+        target="_blank"
+        rel="noopener"
+      >WhatsApp Channel</a>
+
+      <a
+        [href]="site.links.instagram"
+        target="_blank"
+        rel="noopener"
+      >Instagram</a>
+
+      <a
+        [href]="site.links.facebook"
+        target="_blank"
+        rel="noopener"
+      >Facebook</a>
+
+      <a
+        [href]="site.links.x"
+        target="_blank"
+        rel="noopener"
+      >X</a>
+
+      <a
+        [href]="site.links.linkedin"
+        target="_blank"
+        rel="noopener"
+      >LinkedIn</a>
+
+      <a
+        [href]="site.links.podcast"
+        target="_blank"
+        rel="noopener"
+      >Podcast</a>
+
+    </div>
+
+  </div>
+<form
+  class="contact-form"
+  (ngSubmit)="submitForm()"
+  #contactForm="ngForm"
+>
+
+  @if (!submitted()) {
+
+    <h2>Send us a message</h2>
+
+    <label>Name</label>
+
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="contact.name"
+      placeholder="Your name"
+      required
+    >
+
+    <label>Email</label>
+
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="contact.email"
+      placeholder="Your email"
+      required
+    >
+
+    <label>Subject</label>
+
+    <input
+      type="text"
+      name="subject"
+      [(ngModel)]="contact.subject"
+      placeholder="Message subject"
+      required
+    >
+
+    <label>Message</label>
+
+    <textarea
+      name="message"
+      [(ngModel)]="contact.message"
+      rows="7"
+      placeholder="Write your message"
+      required
+    ></textarea>
+
+    @if (error()) {
+      <p class="notice error">{{ error() }}</p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="!contactForm.valid || sending()"
+    >
+      {{ sending() ? 'Sending…' : 'Send Message' }}
+    </button>
+
+  } @else {
+
+    <div class="success-message">
+
+      <div class="success-icon">✓</div>
+
+      @if (viaMail()) {
+
+        <h2>Almost there</h2>
+
+        <p>
+          Your email app should have opened with the message ready. Press
+          send there and it reaches us. If nothing opened, email us directly
+          at
+          <a [href]="'mailto:' + site.contact.email">
+            {{ site.contact.email }}
+          </a>.
+        </p>
+
+      } @else {
+
+        <h2>Message Sent!</h2>
+
+        <p>
+          Thank you for contacting SmartResponse Youth Foundation.
+          We appreciate you reaching out to us.
+        </p>
+
+      }
+
+      <button
+        type="button"
+        (click)="reset()"
+      >
+        Send Another Message
+      </button>
+
+    </div>
+
+  }
+
+</form>
+
+</section>

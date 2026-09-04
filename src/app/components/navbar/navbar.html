@@ -1,0 +1,144 @@
+<header class="navbar">
+
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <a
+      routerLink="/"
+      class="brand"
+      (click)="closeMenu()"
+    >
+
+      <img
+        src="/images/logo.jpeg"
+        alt="SmartResponse Youth Foundation Logo"
+      >
+
+      <div class="brand-text">
+        <strong>SmartResponse</strong>
+        <span>Save the Dignity</span>
+      </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav [class.open]="menuOpen">
+
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+      >
+        Home
+      </a>
+
+      <a
+        routerLink="/about"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        About Us
+      </a>
+
+      <a
+        routerLink="/services"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        Services
+      </a>
+
+      <a
+        routerLink="/blog"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        Blog
+      </a>
+
+      <a
+        routerLink="/volunteer"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        Volunteer
+      </a>
+
+      <a
+        routerLink="/contact"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        Contact
+      </a>
+
+
+      <!-- ACTION BUTTONS (inline on mobile, hidden here on desktop) -->
+
+      <div class="nav-actions-mobile">
+
+        <a
+          routerLink="/shop"
+          class="nav-button shop-button"
+          (click)="closeMenu()"
+        >
+          Shop
+        </a>
+
+        <a
+          routerLink="/donate"
+          class="nav-button donate-button"
+          (click)="closeMenu()"
+        >
+          Donate
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- ACTION BUTTONS -->
+
+    <div class="nav-actions">
+
+      <a
+        routerLink="/shop"
+        routerLinkActive="active"
+        class="nav-button shop-button"
+      >
+        Shop
+      </a>
+
+      <a
+        routerLink="/donate"
+        class="nav-button donate-button"
+      >
+        Donate
+      </a>
+
+    </div>
+
+
+    <!-- HAMBURGER -->
+
+    <button
+      class="menu-btn"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Toggle navigation menu"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+  </div>
+
+</header>

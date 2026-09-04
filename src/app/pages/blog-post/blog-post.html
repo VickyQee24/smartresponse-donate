@@ -1,0 +1,124 @@
+@if (post(); as article) {
+
+  <article class="post">
+
+    <header class="post-head">
+
+      <div class="wrap-narrow">
+
+        <a routerLink="/blog" class="back">← All stories</a>
+
+        <span class="eyebrow">{{ article.category }}</span>
+
+        <h1>{{ article.title }}</h1>
+
+        <div class="byline">
+          <span class="avatar">{{ article.author.charAt(0) }}</span>
+          <div>
+            <strong>{{ article.author }}</strong>
+            <small>{{ article.authorRole }} · {{ article.readTime }}</small>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+
+    <div class="post-body wrap-narrow">
+
+      @for (block of article.body; track $index) {
+
+        @switch (block.kind) {
+
+          @case ('h') {
+            <h2>{{ block.text }}</h2>
+          }
+
+          @case ('quote') {
+            <blockquote>{{ block.text }}</blockquote>
+          }
+
+          @case ('list') {
+            <ul>
+              @for (item of block.items; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
+
+          @default {
+            <p>{{ block.text }}</p>
+          }
+
+        }
+
+      }
+
+    </div>
+
+    <!-- podcast -->
+
+    <div class="wrap-narrow">
+
+      <a
+        class="podcast"
+        [href]="site.links.podcast"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="icon">▶</span>
+        <div>
+          <strong>Listen: Where Smart Meets You</strong>
+          <small>Our podcast on Spotify — conversations on safety, youth
+            and dignity.</small>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- more -->
+
+    <section class="more">
+
+      <div class="wrap">
+
+        <h2>More stories</h2>
+
+        <div class="more-grid">
+
+          @for (other of others(); track other.slug) {
+
+            <a class="more-card" [routerLink]="['/blog', other.slug]">
+              <small>{{ other.category }}</small>
+              <h3>{{ other.title }}</h3>
+              <p>{{ other.excerpt }}</p>
+              <span>Read more →</span>
+            </a>
+
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </article>
+
+} @else {
+
+  <section class="page-hero">
+
+    <span>NOT FOUND</span>
+
+    <h1>We couldn't find that story.</h1>
+
+    <p>It may have been moved or renamed.</p>
+
+    <p style="margin-top: 24px">
+      <a routerLink="/blog" class="btn primary">Back to the blog</a>
+    </p>
+
+  </section>
+
+}

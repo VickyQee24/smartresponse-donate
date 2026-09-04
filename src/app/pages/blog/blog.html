@@ -1,0 +1,233 @@
+<section class="page-hero">
+
+  <span>OUR BLOG</span>
+
+  <h1>Stories, ideas and community impact.</h1>
+
+  <p>
+    Follow our activities, insights and stories from the communities we serve.
+  </p>
+
+</section>
+
+
+<!-- ============ LAUNCH FLYER + QR CODES ============ -->
+
+<section class="launch">
+
+  <div class="wrap launch-inner">
+
+    <div class="launch-copy">
+
+      <span class="eyebrow">APP LAUNCH EVENT</span>
+
+      <h2>Smart Response (Save the Dignity) App Launch</h2>
+
+      <p class="when">
+        <strong>{{ site.launch.dates }}</strong>
+        <span>{{ site.launch.venue }}</span>
+        <span>{{ site.launch.time }}</span>
+      </p>
+
+      <p>
+        The 112 Smart Response App is a 3-in-1 emergency reporting mobile
+        application designed to connect individuals in need with first
+        responders in real time — be it fire, health, security services or
+        road assistance. It features an AI-powered doctor for mild illnesses
+        and basic health advice, GPS integration to direct users to the
+        nearest hospital, and anti-kidnapping trigger alerts via smart
+        gadgets.
+      </p>
+
+      <div class="qr-row">
+
+        <div class="qr">
+
+          <div class="qr-frame">
+            @if (site.launch.qrInstall) {
+              <img
+                [src]="site.launch.qrInstall"
+                alt="QR code to install the Smart Response web app">
+            } @else {
+              <span>QR code<br>coming</span>
+            }
+          </div>
+
+          <strong>Install the web app</strong>
+
+          <small>Scan to install and join the waitlist / WhatsApp channel</small>
+
+          @if (site.links.appDownload) {
+            <a
+              [href]="site.links.appDownload"
+              target="_blank"
+              rel="noopener"
+            >Open the link →</a>
+          } @else {
+            <a
+              [href]="site.links.whatsappChannel"
+              target="_blank"
+              rel="noopener"
+            >Join the channel →</a>
+          }
+
+        </div>
+
+        <!-- No QR here: press straight through to the bank details. -->
+
+        <a class="qr press" routerLink="/donate" fragment="bank">
+
+          <div class="press-icon">♥</div>
+
+          <strong>Press to donate</strong>
+
+          <small>
+            Press to donate to support our app and support humanity causes
+          </small>
+
+          <span class="press-link">See our account details →</span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="flyer">
+
+      @if (site.launch.flyer) {
+        <img [src]="site.launch.flyer" alt="Smart Response app launch flyer">
+      } @else {
+        <div class="flyer-empty">
+          <strong>Launch flyer</strong>
+          <small>Add public/images/launch-flyer.jpg</small>
+        </div>
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============ ARTICLES ============ -->
+
+<section class="blog">
+
+  <div class="wrap">
+
+    <div class="blog-grid">
+
+      @for (post of posts; track post.slug) {
+
+        <article class="card entry">
+
+          <a class="thumb" [routerLink]="['/blog', post.slug]">
+            <span>{{ post.category }}</span>
+          </a>
+
+          <div class="entry-body">
+
+            <small>{{ post.category }}</small>
+
+            <h2>
+              <a [routerLink]="['/blog', post.slug]">{{ post.title }}</a>
+            </h2>
+
+            <p>{{ post.excerpt }}</p>
+
+            <div class="meta">
+              <span>{{ post.author }}</span>
+              <span>{{ post.readTime }}</span>
+            </div>
+
+            <a class="read" [routerLink]="['/blog', post.slug]">
+              Read more →
+            </a>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============ PODCAST ============ -->
+
+<section class="podcast-band">
+
+  <div class="wrap podcast-inner">
+
+    <div>
+      <span class="eyebrow">LISTEN</span>
+      <h2>Where Smart Meets You</h2>
+      <p>
+        Our podcast — conversations on safety, health, youth and dignity.
+        We discuss, talk on and unpack the issues that matter.
+      </p>
+    </div>
+
+    <a
+      class="btn primary"
+      [href]="site.links.podcast"
+      target="_blank"
+      rel="noopener"
+    >
+      Listen on Spotify →
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- ============ TESTIMONIALS ============ -->
+
+<section class="testimonials">
+
+  <div class="wrap">
+
+    <div class="t-head">
+      <span class="eyebrow">TESTIMONIALS</span>
+      <h2>In their own words</h2>
+      <p>
+        Voices from the girls, volunteers and partners we work alongside.
+      </p>
+    </div>
+
+    <div class="t-grid">
+
+      @for (item of testimonials; track item.quote) {
+
+        <figure class="t-card">
+
+          <div class="marks">“</div>
+
+          <blockquote>{{ item.quote }}</blockquote>
+
+          <figcaption>
+            <strong>{{ item.name }}</strong>
+            <small>{{ item.role }}</small>
+          </figcaption>
+
+        </figure>
+
+      }
+
+    </div>
+
+    <div class="t-cta">
+      <p>Have a story to share with us?</p>
+      <a routerLink="/contact" class="btn secondary">Send us your story</a>
+    </div>
+
+  </div>
+
+</section>

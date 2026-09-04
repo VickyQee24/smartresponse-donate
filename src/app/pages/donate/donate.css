@@ -1,0 +1,386 @@
+.campaign {
+  padding: 64px 0 8px;
+}
+
+.campaign p {
+  color: var(--body);
+  font-size: 1.05rem;
+}
+
+.campaign .tagline {
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-top: 8px;
+}
+
+/* ---------- giving ---------- */
+
+.give {
+  padding: 56px 0 80px;
+}
+
+.give-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.give-card {
+  padding: 32px;
+}
+
+.give-card h2 {
+  margin: 0 0 22px;
+  font-size: 1.55rem;
+}
+
+.choices {
+  border: 0;
+  padding: 0;
+  margin: 0 0 22px;
+}
+
+.choices legend {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.chip.on {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+.amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.amount {
+  padding: 13px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.amount:hover {
+  border-color: var(--pink);
+}
+
+.amount.on {
+  background: var(--pink-tint);
+  border-color: var(--pink);
+  color: var(--pink-dark);
+}
+
+.custom {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.tier-note {
+  margin: 12px 0 0;
+}
+
+.summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px 18px;
+  background: var(--pink-tint);
+  border-radius: var(--radius);
+  margin: 4px 0 18px;
+}
+
+.summary span {
+  font-size: 13px;
+  color: var(--body);
+}
+
+.summary strong {
+  font-size: 1.5rem;
+  color: var(--pink-dark);
+}
+
+.summary small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.notice {
+  margin: 0 0 16px;
+}
+
+.secure {
+  text-align: center;
+  margin: 14px 0 0;
+}
+
+/* success */
+
+.thanks {
+  text-align: center;
+  padding: 24px 0;
+}
+
+.thanks .tick {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--pink-tint);
+  color: var(--pink);
+  font-size: 28px;
+  display: grid;
+  place-items: center;
+}
+
+.thanks h2 {
+  margin: 0 0 8px;
+}
+
+.thanks p {
+  color: var(--body);
+  margin: 0 0 12px;
+}
+
+.thanks .btn {
+  margin-top: 8px;
+}
+
+/* ---------- bank ---------- */
+
+.bank {
+  /* Clears the sticky navbar when linked to via #bank. */
+  scroll-margin-top: 100px;
+  background: var(--pink-tint-2);
+  border: 1px solid #f8dce9;
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+}
+
+.bank h2 {
+  font-size: 1.35rem;
+  margin: 10px 0 10px;
+}
+
+.bank > p {
+  color: var(--body);
+  font-size: 0.95rem;
+  margin: 0 0 20px;
+}
+
+.account-name {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.account-name small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.account-name strong {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 4px 0 6px;
+}
+
+.accounts {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.accounts li {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+
+.acct-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cur {
+  font-weight: 800;
+  color: var(--pink);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.num {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.num strong {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  font-size: 0.98rem;
+}
+
+.num button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pink);
+  cursor: pointer;
+}
+
+.num button:hover {
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+.acct-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.acct-foot small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Repeated on every account so nobody transfers to the wrong bank. */
+.bank-name {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: right;
+}
+
+.account-name .bank-name {
+  display: block;
+  text-align: left;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.sent {
+  margin-bottom: 14px;
+}
+
+.reg {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #f3cede;
+}
+
+/* ---------- impact ---------- */
+
+.does {
+  background: var(--surface-alt);
+  padding: 76px 0;
+  border-top: 1px solid var(--line);
+}
+
+.does-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.does-head h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  margin: 10px 0 0;
+}
+
+.does-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.does-grid article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+}
+
+.does-grid strong {
+  display: block;
+  color: var(--pink);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.does-grid p {
+  color: var(--body);
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+.does-cta {
+  text-align: center;
+  margin-top: 34px;
+}
+
+@media (max-width: 900px) {
+  .give-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .give-card {
+    padding: 24px 20px;
+  }
+}

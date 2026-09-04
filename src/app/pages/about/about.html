@@ -1,0 +1,222 @@
+<section class="page-hero">
+
+  <span>ABOUT US</span>
+
+  <h1>We exist to save the dignity of every person.</h1>
+
+  <p>
+    Learn about our mission, our vision and the people behind the
+    Save the Dignity campaign.
+  </p>
+
+</section>
+
+
+<!-- ============ MISSION & VISION ============ -->
+
+<section class="mv">
+
+  <div class="wrap">
+
+    <div class="mv-head">
+      <span class="eyebrow">SMART RESPONSE APP TECHNOLOGIES LTD</span>
+      <h2>Mission &amp; Vision</h2>
+    </div>
+
+    <div class="mv-grid">
+
+      <article class="mv-card">
+
+        <h3>Mission</h3>
+
+        <p>
+          To provide fast, innovative, and accessible emergency reporting and
+          response solutions that protect lives, property, and communities in
+          Nigeria and beyond.
+        </p>
+
+      </article>
+
+      <article class="mv-card accent">
+
+        <h3>Vision</h3>
+
+        <p>
+          Bridging the critical gap in National safety response
+          infrastructure in order to become the world's leading emergency
+          response technology platform, connecting people, smart wearables,
+          ambulances, paramedics, and emergency services to deliver rapid,
+          coordinated assistance whenever and wherever it is needed.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============ STORY ============ -->
+
+<section class="story">
+
+  <div class="wrap story-grid">
+
+    <div class="story-content">
+
+      <span class="eyebrow">OUR STORY</span>
+
+      <h2>Young people creating meaningful change.</h2>
+
+      <p>
+        Smart Response Youth Foundation is a youth-centred organization
+        focused on community development, humanitarian support, empowerment
+        and social impact. We work for the upholding of the dignity of
+        marginalized youth and the girl child.
+      </p>
+
+      <p>
+        We believe that every person deserves dignity, opportunity, safety
+        and a chance to contribute to society. Our work brings young people,
+        communities and partners together to identify challenges and develop
+        practical solutions.
+      </p>
+
+      <p>
+        The foundation started in 2025 and is affiliated to the 112 Smart
+        Response App, an emergency reporting platform built to connect people
+        who need help with the services that can reach them.
+      </p>
+
+      <p class="reg">
+        Registered in Nigeria — <strong>{{ site.organisation.registration }}</strong>
+      </p>
+
+    </div>
+
+    <aside class="launch">
+
+      <span class="eyebrow">FIRST HUMANITARIAN LAUNCH</span>
+
+      <h3>23 – 24 September 2026</h3>
+
+      <p class="place">Adeleke University, Ede, Osun State, Nigeria</p>
+
+      <p>
+        It promises to be one of a kind. Get ready to stream the event online
+        and be part of the unveiling of a web application set to redefine
+        personal security, health and safety in Nigeria and beyond.
+      </p>
+
+      <a
+        class="btn primary"
+        [href]="site.links.whatsappChannel"
+        target="_blank"
+        rel="noopener"
+      >
+        Follow the countdown →
+      </a>
+
+    </aside>
+
+  </div>
+
+</section>
+
+
+<!-- ============ TRUSTEES ============ -->
+
+<section class="team">
+
+  <div class="wrap">
+
+    <div class="team-head">
+      <span class="eyebrow">OUR PEOPLE</span>
+      <h2>Founder and board of trustees</h2>
+    </div>
+
+    <div class="team-grid">
+
+      @for (person of trustees; track person.name) {
+
+        <article class="person">
+
+          <div class="portrait">
+            @if (hasPhoto(person.name, person.photo)) {
+              <img
+                [src]="person.photo"
+                [alt]="person.name"
+                (error)="onPhotoError(person.name)">
+            } @else {
+              <span>{{ person.initials }}</span>
+            }
+          </div>
+
+          <div class="person-body">
+
+            <h3>{{ person.name }}</h3>
+
+            <small>{{ person.role }}</small>
+
+            @for (paragraph of person.bio; track $index) {
+              <p>{{ paragraph }}</p>
+            }
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============ VALUES ============ -->
+
+<section class="values">
+
+  <div class="wrap">
+
+    <div class="team-head">
+      <span class="eyebrow">OUR VALUES</span>
+      <h2>What guides our work</h2>
+    </div>
+
+    <div class="value-grid">
+
+      <div>
+        <h3>Compassion</h3>
+        <p>We care deeply about the people and communities we serve.</p>
+      </div>
+
+      <div>
+        <h3>Integrity</h3>
+        <p>We act responsibly, honestly and transparently.</p>
+      </div>
+
+      <div>
+        <h3>Service</h3>
+        <p>We believe leadership begins with serving others.</p>
+      </div>
+
+      <div>
+        <h3>Innovation</h3>
+        <p>We embrace ideas and technology that create positive impact.</p>
+      </div>
+
+    </div>
+
+    <div class="values-cta">
+      <a routerLink="/donate" class="btn primary">Support our mission</a>
+      <a routerLink="/volunteer" class="btn secondary">Volunteer with us</a>
+    </div>
+
+  </div>
+
+</section>

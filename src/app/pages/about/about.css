@@ -1,0 +1,237 @@
+/* ---------- mission & vision ---------- */
+
+.mv {
+  padding: 76px 0 8px;
+}
+
+.mv-head {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.mv-head h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  margin: 10px 0 0;
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.mv-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 34px 30px;
+  background: #fff;
+}
+
+.mv-card.accent {
+  background: linear-gradient(150deg, var(--pink) 0%, var(--pink-deep) 100%);
+  border-color: transparent;
+}
+
+.mv-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 14px;
+  color: var(--pink);
+}
+
+.mv-card.accent h3 {
+  color: #fff;
+}
+
+.mv-card p {
+  color: var(--body);
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.mv-card.accent p {
+  color: rgba(255, 255, 255, 0.94);
+}
+
+/* ---------- story ---------- */
+
+.story {
+  padding: 72px 0 20px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 42px;
+  align-items: start;
+}
+
+.story-content h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  margin: 12px 0 18px;
+}
+
+.story-content p {
+  color: var(--body);
+  margin: 0 0 16px;
+}
+
+.story-content .reg {
+  font-size: 0.86rem;
+  color: var(--muted);
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.launch {
+  background: var(--pink-tint);
+  border: 1px solid #f8dce9;
+  border-radius: var(--radius-lg);
+  padding: 30px 28px;
+}
+
+.launch h3 {
+  font-size: 1.5rem;
+  margin: 10px 0 6px;
+  color: var(--pink-dark);
+}
+
+.launch .place {
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+}
+
+.launch p {
+  color: var(--body);
+  font-size: 0.94rem;
+  margin: 0 0 20px;
+}
+
+/* ---------- trustees ---------- */
+
+.team {
+  padding: 76px 0 20px;
+}
+
+.team-head {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.team-head h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  margin: 10px 0 0;
+}
+
+.team-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  background: #fff;
+}
+
+.portrait {
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--pink) 0%, var(--pink-deep) 100%);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person-body h3 {
+  font-size: 1.2rem;
+  margin: 0 0 4px;
+}
+
+.person-body > small {
+  display: block;
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.person-body p {
+  color: var(--body);
+  font-size: 0.95rem;
+  margin: 0 0 12px;
+}
+
+/* ---------- values ---------- */
+
+.values {
+  padding: 76px 0 90px;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.value-grid div {
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+}
+
+.value-grid h3 {
+  font-size: 1.08rem;
+  margin: 0 0 8px;
+  color: var(--pink);
+}
+
+.value-grid p {
+  color: var(--body);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.values-cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .mv-grid,
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .person {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .portrait {
+    width: 150px;
+  }
+}

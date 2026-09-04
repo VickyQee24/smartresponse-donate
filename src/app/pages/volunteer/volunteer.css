@@ -1,0 +1,163 @@
+.why {
+  padding: 76px 0 20px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.why-grid article {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.why-grid article:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: #f6d4e5;
+}
+
+.why-grid span {
+  display: block;
+  color: var(--pink);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.why-grid h3 {
+  font-size: 1.08rem;
+  margin: 0 0 8px;
+}
+
+.why-grid p {
+  color: var(--body);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ---------- apply ---------- */
+
+.apply {
+  padding: 64px 0 90px;
+}
+
+.apply-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.intro h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  margin: 12px 0 14px;
+}
+
+.intro p {
+  color: var(--body);
+  margin: 0 0 26px;
+}
+
+.channel {
+  display: block;
+  background: var(--pink-tint);
+  border: 1px solid #f8dce9;
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  text-decoration: none;
+}
+
+.channel:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+}
+
+.channel strong {
+  display: block;
+  color: var(--pink-dark);
+  margin-bottom: 4px;
+}
+
+.channel small {
+  color: var(--body);
+  font-size: 0.86rem;
+}
+
+.channel:hover strong,
+.channel:hover small {
+  color: #fff;
+}
+
+.apply-card {
+  padding: 32px;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.done {
+  text-align: center;
+  padding: 34px 0;
+}
+
+.done .tick {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--pink-tint);
+  color: var(--pink);
+  font-size: 26px;
+  display: grid;
+  place-items: center;
+}
+
+.done h2 {
+  margin: 0 0 10px;
+}
+
+.done p {
+  color: var(--body);
+  margin: 0 0 22px;
+}
+
+.link {
+  display: block;
+  margin: 18px auto 0;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--pink);
+}
+
+@media (max-width: 900px) {
+  .apply-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-card {
+    padding: 24px 20px;
+  }
+}

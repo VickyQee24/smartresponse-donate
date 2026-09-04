@@ -1,0 +1,209 @@
+.footer {
+  background: #202020;
+  color: white;
+  padding-top: 70px;
+}
+
+.footer-container {
+  max-width: 1180px;
+  margin: auto;
+  padding: 0 25px 60px;
+
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1fr 1.2fr;
+  gap: 44px;
+}
+
+.footer-brand img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  background: white;
+  border-radius: 10px;
+}
+
+.footer-brand h2 {
+  color: #e51b87;
+  margin-bottom: 0;
+}
+
+.footer-brand .slogan {
+  color: #ddd;
+  font-weight: 600;
+  margin: 4px 0 10px;
+}
+
+.footer-brand p {
+  color: #bbb;
+  max-width: 320px;
+  line-height: 1.7;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.socials a {
+  border: 1px solid #3d3d3d;
+  border-radius: 999px;
+  padding: 7px 14px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.socials a:hover {
+  background: #e51b87;
+  border-color: #e51b87;
+  color: #fff;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links h3,
+.footer-give h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.footer-links a {
+  color: #bbb;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #e51b87;
+}
+
+/* ---------- transfer block ---------- */
+
+.footer-give .acct-name {
+  color: #999;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.footer-give .acct {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 0 0 12px;
+}
+
+.footer-give .acct strong {
+  display: block;
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-give .acct span {
+  display: block;
+  color: #999;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Named explicitly so nobody transfers to the wrong bank. */
+.footer-give .bank-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  margin-top: 3px;
+}
+
+.all-accounts {
+  color: #e51b87;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.all-accounts:hover {
+  text-decoration: underline;
+}
+
+/* ---------- bottom bar ---------- */
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  max-width: 1180px;
+  margin: auto;
+  padding: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  color: #999;
+  font-size: 14px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom .reg {
+  display: inline-block;
+  margin-left: 8px;
+  padding-left: 10px;
+  border-left: 1px solid #444;
+  color: #7d7d7d;
+  font-size: 13px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 20px;
+}
+
+.legal-links a {
+  color: #999;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.legal-links a:hover {
+  color: #e51b87;
+}
+
+@media (max-width: 950px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+  }
+}
+
+@media (max-width: 620px) {
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-bottom .reg {
+    display: block;
+    margin: 6px 0 0;
+    padding: 0;
+    border: 0;
+  }
+}

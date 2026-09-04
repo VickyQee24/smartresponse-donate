@@ -1,0 +1,177 @@
+<section class="page-hero">
+
+  <span>LEGAL</span>
+
+  <h1>Terms and Conditions</h1>
+
+  <p>The terms that apply when you use this website, donate or buy from us.</p>
+
+</section>
+
+
+<section class="legal">
+
+  <div class="wrap-narrow">
+
+    <p class="updated">Last updated: {{ updated }}</p>
+
+    <h2>1. Who we are</h2>
+
+    <p>
+      This website is operated by {{ site.organisation.longName }}
+      ("the Foundation", "we", "us"), a non-governmental organization
+      registered in Nigeria under registration number
+      <strong>{{ site.organisation.registration }}</strong>. The Foundation is
+      affiliated to the 112 Smart Response App, developed by
+      {{ site.organisation.company }}.
+    </p>
+
+    <h2>2. Accepting these terms</h2>
+
+    <p>
+      By accessing this website, making a donation, purchasing a product or
+      submitting a form, you agree to these Terms and Conditions. If you do
+      not agree with them, please do not use this website.
+    </p>
+
+    <h2>3. Donations</h2>
+
+    <ul>
+      <li>
+        Donations are voluntary and are used to further the charitable
+        objectives of the Foundation, including the Save Her Dignity
+        Campaign, health access, digital education and civic empowerment.
+      </li>
+      <li>
+        We allocate donations where the need is greatest unless you have
+        agreed a specific restricted purpose with us in writing.
+      </li>
+      <li>
+        Recurring donations continue on the schedule you select until you
+        cancel them. You may cancel at any time by contacting us at
+        <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>.
+      </li>
+      <li>
+        Donations are generally non-refundable. If you have made an error,
+        contact us within 14 days and we will consider your request in good
+        faith.
+      </li>
+      <li>
+        You confirm that any funds you donate are lawfully yours to give.
+      </li>
+    </ul>
+
+    <h2>4. Purchases and delivery</h2>
+
+    <ul>
+      <li>
+        Prices are shown in Nigerian Naira and may change without notice.
+        The price confirmed at checkout is the price that applies.
+      </li>
+      <li>
+        Bulk pricing applies automatically once the stated quantity
+        threshold is reached.
+      </li>
+      <li>
+        We will contact you using the details you provide to arrange
+        delivery. Delivery timelines are estimates, not guarantees.
+      </li>
+      <li>
+        Faulty goods may be returned within 7 days of delivery for repair,
+        replacement or refund. Products damaged through misuse are not
+        covered.
+      </li>
+    </ul>
+
+    <h2>5. Payments</h2>
+
+    <p>
+      Card payments are processed by Paystack. We do not receive or store
+      your card details. Bank transfers are made directly to the Foundation's
+      accounts published on our Donate page. Please verify account details on
+      this website before transferring, and contact us if anything looks
+      inconsistent.
+    </p>
+
+    <h2>6. Safety information is not emergency service</h2>
+
+    <p>
+      Content on this website about the 112 Smart Response App, health or
+      personal safety is provided for information only. It is not medical
+      advice and it does not replace professional emergency services. In an
+      emergency, contact the relevant emergency services directly. Any AI
+      supported health feature described is a support tool, not a
+      replacement for a qualified healthcare professional.
+    </p>
+
+    <h2>7. Volunteering</h2>
+
+    <p>
+      Submitting a volunteer application does not create an employment
+      relationship or guarantee a placement. Volunteers are expected to act
+      respectfully, protect the dignity and privacy of beneficiaries, and
+      follow our safeguarding guidance.
+    </p>
+
+    <h2>8. Intellectual property</h2>
+
+    <p>
+      The content, branding, articles and materials on this website belong to
+      the Foundation or its contributors. You may share and quote our content
+      with attribution, but you may not reproduce it commercially without our
+      written permission.
+    </p>
+
+    <h2>9. Acceptable use</h2>
+
+    <ul>
+      <li>Do not use this website unlawfully or fraudulently.</li>
+      <li>Do not attempt to gain unauthorised access to our systems.</li>
+      <li>Do not submit false, abusive or misleading information.</li>
+    </ul>
+
+    <h2>10. Limitation of liability</h2>
+
+    <p>
+      We work to keep this website accurate and available, but we provide it
+      "as is". To the extent permitted by Nigerian law, we are not liable for
+      indirect or consequential loss arising from your use of this website.
+      Nothing here limits liability that cannot lawfully be limited.
+    </p>
+
+    <h2>11. Changes</h2>
+
+    <p>
+      We may update these terms from time to time. The version published on
+      this page is the version that applies.
+    </p>
+
+    <h2>12. Governing law</h2>
+
+    <p>
+      These terms are governed by the laws of the Federal Republic of
+      Nigeria, and the Nigerian courts have jurisdiction over any dispute.
+    </p>
+
+    <div class="contact-box">
+
+      <h2>Contact us</h2>
+
+      <p>
+        <strong>{{ site.organisation.longName }}</strong>
+      </p>
+
+      <p>
+        Email:
+        <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+      </p>
+
+      <p>Phone: {{ site.contact.phone }}</p>
+
+      <p>{{ site.contact.location }}</p>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,395 @@
+<!-- ============ HERO / CAMPAIGN CALL TO ACTION ============ -->
+
+<section class="page-hero donate-hero">
+
+  <span>SAVE HER DIGNITY CAMPAIGN</span>
+
+  <h1>Save her dignity. Empower her future.</h1>
+
+  <p>
+    Every girl deserves to learn, dream and thrive without the burden of
+    menstrual poverty.
+  </p>
+
+</section>
+
+
+<section class="campaign">
+
+  <div class="wrap-narrow stack">
+
+    <p>
+      Through the <strong>Save Her Dignity Campaign</strong>, Smart Response
+      Youth Foundation is empowering Nigerian youth — especially adolescent
+      girls and vulnerable young people — with menstrual health support,
+      health access, digital education and civic empowerment.
+    </p>
+
+    <p>
+      Your support can help provide sanitary products, health assistance
+      through free or supported medication, the Save the Dignity campaign
+      launch, digital education and civic empowerment for vulnerable
+      Nigerian youth via the forum section of the app.
+    </p>
+
+    <p>
+      Together, we can help girls stay in school, protect dignity, and create
+      opportunities for a healthier, more equal future. Join us in giving
+      every girl the dignity to stay in school and every young person the
+      opportunity to become a positive force for change.
+    </p>
+
+    <p class="tagline">
+      Save a dignity. Empower a future. Donate today. Be the change.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ============ GIVING FORM ============ -->
+
+<section class="give" id="give">
+
+  <div class="give-grid wrap">
+
+    <!-- form -->
+
+    <div class="card give-card">
+
+      @if (reference()) {
+
+        <div class="thanks">
+
+          <div class="tick">♥</div>
+
+          <h2>Thank you.</h2>
+
+          <p>
+            Your {{ frequency() === 'once' ? 'gift' : frequency() + ' gift' }}
+            of {{ format(effectiveAmount()) }} has been received.
+          </p>
+
+          <p class="hint">
+            Payment reference: <strong>{{ reference() }}</strong>
+          </p>
+
+          <button
+            type="button"
+            class="btn secondary"
+            (click)="reference.set('')"
+          >
+            Make another donation
+          </button>
+
+        </div>
+
+      } @else {
+
+        <h2>Make a donation</h2>
+
+        <!-- frequency -->
+
+        <fieldset class="choices">
+
+          <legend>How often would you like to give?</legend>
+
+          <div class="chips">
+
+            @for (freq of frequencies; track freq.id) {
+
+              <button
+                type="button"
+                class="chip"
+                [class.on]="frequency() === freq.id"
+                (click)="setFrequency(freq.id)"
+              >
+                {{ freq.label }}
+              </button>
+
+            }
+
+          </div>
+
+        </fieldset>
+
+        <!-- amount -->
+
+        <fieldset class="choices">
+
+          <legend>Choose an amount</legend>
+
+          @if (recurring()) {
+
+            <!-- Recurring runs on Paystack Plans, which are fixed amounts. -->
+
+            @if (tiers().length) {
+
+              <div class="amounts">
+
+                @for (tier of tiers(); track tier.code) {
+
+                  <button
+                    type="button"
+                    class="amount"
+                    [class.on]="amount() === tier.amount"
+                    (click)="amount.set(tier.amount)"
+                  >
+                    {{ format(tier.amount) }}
+                  </button>
+
+                }
+
+              </div>
+
+              <p class="hint tier-note">
+                Recurring gifts are set amounts. Choose
+                <strong>Give once</strong> to enter any amount you like.
+              </p>
+
+            }
+
+          } @else {
+
+            <div class="amounts">
+
+              @for (preset of presets; track preset) {
+
+                <button
+                  type="button"
+                  class="amount"
+                  [class.on]="effectiveAmount() === preset"
+                  (click)="selectPreset(preset)"
+                >
+                  {{ format(preset) }}
+                </button>
+
+              }
+
+            </div>
+
+            <label class="field custom">
+              <span>Or enter your own amount (₦)</span>
+              <input
+                type="number"
+                min="100"
+                step="100"
+                placeholder="e.g. 7500"
+                [ngModel]="customAmount()"
+                (ngModelChange)="customAmount.set($event)"
+                name="customAmount"
+              >
+            </label>
+
+          }
+
+        </fieldset>
+
+        <!-- donor -->
+
+        <label class="field">
+          <span>Your name (optional)</span>
+          <input
+            type="text"
+            placeholder="Full name"
+            [ngModel]="name()"
+            (ngModelChange)="name.set($event)"
+            name="name"
+          >
+        </label>
+
+        <label class="field">
+          <span>Email address</span>
+          <input
+            type="email"
+            placeholder="you@example.com"
+            required
+            [ngModel]="email()"
+            (ngModelChange)="email.set($event)"
+            name="email"
+          >
+          <small class="hint">Your receipt is sent here.</small>
+        </label>
+
+        <!-- summary -->
+
+        <div class="summary">
+          <span>You are giving</span>
+          <strong>{{ format(effectiveAmount()) }}</strong>
+          <small>{{ frequencyLabel() }}</small>
+        </div>
+
+        @if (error()) {
+          <p class="notice error">{{ error() }}</p>
+        }
+
+        @if (!paystackReady) {
+          <p class="notice warn">
+            Card payment is being connected. In the meantime please use the
+            bank transfer details beside this form — every transfer reaches
+            us the same way.
+          </p>
+        } @else if (planMissing()) {
+          <p class="notice warn">
+            {{ frequency() }} giving is not switched on yet. Choose
+            <strong>Give once</strong>, pick another frequency, or use the
+            bank transfer details beside this form.
+          </p>
+        }
+
+        <button
+          type="button"
+          class="btn primary block"
+          [disabled]="!canGive() || !paystackReady || planMissing()"
+          (click)="give()"
+        >
+          {{ processing()
+            ? 'Opening secure checkout…'
+            : 'Donate ' + format(effectiveAmount()) }}
+        </button>
+
+        <p class="hint secure">
+          Payments are processed securely by Paystack. We never see or store
+          your card details.
+        </p>
+
+      }
+
+    </div>
+
+    <!-- bank transfer -->
+
+    <aside class="bank" id="bank">
+
+      <span class="eyebrow">DIRECT BANK TRANSFER</span>
+
+      <h2>Prefer to transfer?</h2>
+
+      <p>
+        You can give in Naira, Dollars, Euros or Pounds straight into the
+        foundation's accounts.
+      </p>
+
+      <div class="account-name">
+        <small>Account name</small>
+        <strong>{{ site.bank.accountName }}</strong>
+        <small>Bank</small>
+        <strong class="bank-name">{{ site.bank.name }}</strong>
+      </div>
+
+      <ul class="accounts">
+
+        @for (account of site.bank.accounts; track account.number) {
+
+          <li>
+
+            <div class="acct-top">
+
+              <span class="cur">{{ account.currency }}</span>
+
+              <div class="num">
+                <strong>{{ account.number }}</strong>
+
+                <button
+                  type="button"
+                  (click)="copy(account.number)"
+                  [attr.aria-label]="
+                    'Copy ' + account.currency + ' account number'"
+                >
+                  {{ copied() === account.number ? 'Copied' : 'Copy' }}
+                </button>
+              </div>
+
+            </div>
+
+            <div class="acct-foot">
+              <small>{{ account.label }}</small>
+              <strong class="bank-name">{{ site.bank.name }}</strong>
+            </div>
+
+          </li>
+
+        }
+
+      </ul>
+
+      <a
+        class="btn primary block sent"
+        routerLink="/thank-you"
+        [queryParams]="{ type: 'donation', method: 'transfer' }"
+      >
+        I have sent the amount
+      </a>
+
+      <p class="hint">
+        After transferring, send your proof of payment to
+        <a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a>
+        so we can send your receipt.
+      </p>
+
+      <p class="reg">
+        {{ site.organisation.name }} is registered in Nigeria —
+        <strong>{{ site.organisation.registration }}</strong>
+      </p>
+
+    </aside>
+
+  </div>
+
+</section>
+
+
+<!-- ============ WHAT YOUR GIFT DOES ============ -->
+
+<section class="does">
+
+  <div class="wrap">
+
+    <div class="does-head">
+      <span class="eyebrow">YOUR IMPACT</span>
+      <h2>What your donation makes possible</h2>
+    </div>
+
+    <div class="does-grid">
+
+      <article>
+        <strong>₦1,000</strong>
+        <p>Provides one sanitary pack for a girl who cannot afford one.</p>
+      </article>
+
+      <article>
+        <strong>₦10,000</strong>
+        <p>
+          Supports health assistance and medication for young people in an
+          outreach community.
+        </p>
+      </article>
+
+      <article>
+        <strong>₦55,000</strong>
+        <p>
+          Puts one Smart Response safety watch on the wrist of a vulnerable
+          girl or young person.
+        </p>
+      </article>
+
+      <article>
+        <strong>₦100,000+</strong>
+        <p>
+          Funds digital education and civic empowerment sessions for a whole
+          school or campus.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="does-cta">
+      <a routerLink="/shop" class="btn secondary">
+        Shop to support instead →
+      </a>
+    </div>
+
+  </div>
+
+</section>

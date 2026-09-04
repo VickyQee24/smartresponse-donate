@@ -1,0 +1,305 @@
+/* =========================================================
+   SmartResponse Youth Foundation — global stylesheet
+   Design tokens + shared primitives used across every page.
+   Component stylesheets should only hold page-specific rules.
+   ========================================================= */
+
+:root {
+  --pink: #e51b87;
+  --pink-dark: #b91e6d;
+  --pink-deep: #7b1955;
+  --pink-tint: #fff4f9;
+  --pink-tint-2: #fff0f7;
+
+  --ink: #1c1c1e;
+  --body: #555;
+  --muted: #767680;
+  --line: #e8e8ec;
+  --surface: #ffffff;
+  --surface-alt: #fafafa;
+
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 18px 48px rgba(229, 27, 135, 0.16);
+
+  --max: 1180px;
+  --pad: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  transition: all 0.25s ease;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+/* ---------- layout primitives ---------- */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.wrap-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.stack > * + * {
+  margin-top: 18px;
+}
+
+/* ---------- page hero (inner pages) ---------- */
+
+.page-hero {
+  background: linear-gradient(160deg, var(--pink-tint) 0%, #ffffff 100%);
+  padding: 96px var(--pad) 72px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero .eyebrow,
+.page-hero > span {
+  display: inline-block;
+  color: var(--pink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  margin: 0 auto 18px;
+  max-width: 820px;
+}
+
+.page-hero p {
+  color: var(--body);
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* ---------- section heading ---------- */
+
+.eyebrow {
+  display: inline-block;
+  color: var(--pink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+              background 0.2s ease, color 0.2s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: var(--pink);
+  color: #fff;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: var(--pink-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+.btn.secondary:hover {
+  background: var(--pink);
+  color: #fff;
+}
+
+.btn.white {
+  background: #fff;
+  color: var(--pink);
+}
+
+.btn.white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.btn.block {
+  width: 100%;
+}
+
+/* ---------- forms ---------- */
+
+.field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.field > span {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 4px rgba(229, 27, 135, 0.12);
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.notice {
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 1px solid;
+}
+
+.notice.warn {
+  background: #fffaf0;
+  border-color: #f2d9a8;
+  color: #7a5510;
+}
+
+.notice.error {
+  background: #fff5f5;
+  border-color: #f3c2c2;
+  color: #a12525;
+}
+
+.notice.ok {
+  background: #f2fbf5;
+  border-color: #b7e3c6;
+  color: #1c6b38;
+}
+
+/* ---------- misc ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+section {
+  animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  section {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

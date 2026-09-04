@@ -1,0 +1,326 @@
+<section class="page-hero">
+
+  <span>SHOP TO SUPPORT</span>
+
+  <h1>Buy safety. Fund dignity.</h1>
+
+  <p>
+    Every purchase funds the Save Her Dignity Campaign and puts safety
+    technology into the hands of young people who need it most.
+  </p>
+
+</section>
+
+
+<!-- ============ PRODUCTS ============ -->
+
+<section class="products">
+
+  <div class="wrap">
+
+    <div class="product-grid">
+
+      @for (product of products; track product.id) {
+
+        <article class="card product">
+
+          <div class="shot">
+            @if (hasImage(product.image)) {
+              <img
+                [src]="product.image"
+                [alt]="product.name"
+                (error)="onImageError(product.image!)">
+            } @else {
+              <span>{{ product.name }}</span>
+            }
+          </div>
+
+          @if (product.gallery?.length) {
+            <div class="gallery">
+              @for (shot of product.gallery; track shot) {
+                @if (hasImage(shot)) {
+                  <img
+                    [src]="shot"
+                    [alt]="product.name + ' colour options'"
+                    (error)="onImageError(shot)">
+                }
+              }
+            </div>
+          }
+
+          <div class="body">
+
+            <h2>{{ product.name }}</h2>
+
+            <p class="tagline">{{ product.tagline }}</p>
+
+            <ul class="features">
+              @for (feature of product.features; track feature) {
+                <li>{{ feature }}</li>
+              }
+            </ul>
+
+            <p class="impact">{{ product.impact }}</p>
+
+            <div class="pricing">
+
+              <div>
+                <strong>{{ format(product.price) }}</strong>
+                <small>per {{ product.unit }}</small>
+              </div>
+
+              @if (product.bulkPrice && product.bulkFrom) {
+                <div class="bulk">
+                  <strong>{{ format(product.bulkPrice) }}</strong>
+                  <small>each from {{ product.bulkFrom }} units</small>
+                </div>
+              }
+
+            </div>
+
+            <button
+              type="button"
+              class="btn primary block"
+              (click)="open(product)"
+            >
+              Order now
+            </button>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============ ORDER PANEL ============ -->
+
+@if (selected(); as product) {
+
+  <div class="overlay" (click)="close()"></div>
+
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Place order">
+
+    <button type="button" class="close" (click)="close()" aria-label="Close">
+      ×
+    </button>
+
+    <h2>{{ product.name }}</h2>
+
+    <p class="hint">{{ product.tagline }}</p>
+
+    <!-- quantity -->
+
+    <div class="qty-row">
+
+      <span>Quantity</span>
+
+      <div class="qty">
+
+        <button type="button" (click)="step(-1)" aria-label="Decrease">
+          −
+        </button>
+
+        <input
+          type="number"
+          min="1"
+          [ngModel]="quantity()"
+          (ngModelChange)="setQuantity($event)"
+          name="quantity"
+          aria-label="Quantity"
+        >
+
+        <button type="button" (click)="step(1)" aria-label="Increase">
+          +
+        </button>
+
+      </div>
+
+    </div>
+
+    @if (product.bulkFrom && !bulkApplied()) {
+      <p class="hint bulk-hint">
+        Order {{ product.bulkFrom }} or more and the price drops to
+        {{ format(product.bulkPrice!) }} each.
+      </p>
+    }
+
+    @if (bulkApplied()) {
+      <p class="notice ok">
+        Bulk price applied — {{ format(unitPrice()) }} per
+        {{ product.unit }}.
+      </p>
+    }
+
+    <!-- buyer details -->
+
+    <label class="field">
+      <span>Full name</span>
+      <input
+        type="text"
+        [ngModel]="name()"
+        (ngModelChange)="name.set($event)"
+        name="name"
+        required
+      >
+    </label>
+
+    <label class="field">
+      <span>Email address</span>
+      <input
+        type="email"
+        [ngModel]="email()"
+        (ngModelChange)="email.set($event)"
+        name="email"
+        required
+      >
+    </label>
+
+    <label class="field">
+      <span>Phone number</span>
+      <input
+        type="tel"
+        [ngModel]="phone()"
+        (ngModelChange)="phone.set($event)"
+        name="phone"
+        required
+      >
+    </label>
+
+    <label class="field">
+      <span>Delivery address</span>
+      <textarea
+        rows="3"
+        [ngModel]="address()"
+        (ngModelChange)="address.set($event)"
+        name="address"
+        required
+      ></textarea>
+    </label>
+
+    <div class="total">
+      <span>Total</span>
+      <strong>{{ format(total()) }}</strong>
+    </div>
+
+    @if (error()) {
+      <p class="notice error">{{ error() }}</p>
+    }
+
+    <!-- ---------- how to pay ---------- -->
+
+    <h3 class="pay-heading">How would you like to pay?</h3>
+
+    <div class="methods">
+
+      <button
+        type="button"
+        class="method"
+        [class.on]="method() === 'card'"
+        [disabled]="!paystackReady"
+        (click)="method.set('card')"
+      >
+        <strong>Pay with card</strong>
+        <small>
+          {{ paystackReady
+            ? 'Instant, secured by Paystack'
+            : 'Being connected — use bank transfer' }}
+        </small>
+      </button>
+
+      <button
+        type="button"
+        class="method"
+        [class.on]="method() === 'transfer'"
+        (click)="method.set('transfer')"
+      >
+        <strong>Bank transfer</strong>
+        <small>Pay into our GTBank account</small>
+      </button>
+
+    </div>
+
+    @if (method() === 'card') {
+
+      <button
+        type="button"
+        class="btn primary block"
+        [disabled]="!canOrder() || !paystackReady"
+        (click)="pay()"
+      >
+        {{ processing()
+          ? 'Opening secure checkout…'
+          : 'Pay ' + format(total()) }}
+      </button>
+
+      <p class="hint secure">
+        Secured by Paystack. We never see or store your card details.
+      </p>
+
+    } @else {
+
+      <!-- GTB account details -->
+
+      <div class="bank-box">
+
+        <div class="bank-head">
+          <small>Account name</small>
+          <strong>{{ site.bank.accountName }}</strong>
+        </div>
+
+        @for (account of site.bank.accounts; track account.number) {
+
+          <div class="acct">
+
+            <div class="acct-top">
+              <span class="cur">{{ account.currency }}</span>
+              <strong class="num">{{ account.number }}</strong>
+            </div>
+
+            <div class="acct-foot">
+              <small>{{ account.label }}</small>
+              <strong class="bank-name">{{ site.bank.name }}</strong>
+            </div>
+
+          </div>
+
+        }
+
+        <div class="acct-total">
+          <small>Amount to send</small>
+          <strong>{{ format(total()) }}</strong>
+        </div>
+
+      </div>
+
+      <p class="hint">
+        Use your name as the transfer narration so we can match your
+        payment, then press the button below.
+      </p>
+
+      <button
+        type="button"
+        class="btn primary block"
+        [disabled]="!canOrder()"
+        (click)="confirmTransfer()"
+      >
+        {{ processing() ? 'Sending your order…' : 'I have sent the amount' }}
+      </button>
+
+      @if (!detailsComplete()) {
+        <p class="hint secure">
+          Fill in your details above so we can match your transfer.
+        </p>
+      }
+
+    }
+
+  </div>
+
+}

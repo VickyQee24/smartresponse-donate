@@ -1,0 +1,223 @@
+<section class="page-hero">
+
+  <span>VOLUNTEER</span>
+
+  <h1>Give your time. Change a life.</h1>
+
+  <p>
+    Our work happens through young people who show up. Join the team behind
+    the Save Her Dignity Campaign.
+  </p>
+
+</section>
+
+
+<!-- ============ WHY ============ -->
+
+<section class="why">
+
+  <div class="wrap">
+
+    <div class="why-grid">
+
+      <article>
+        <span>01</span>
+        <h3>Reach real communities</h3>
+        <p>
+          Join outreaches in schools and communities, distributing sanitary
+          packs and running dignity sessions.
+        </p>
+      </article>
+
+      <article>
+        <span>02</span>
+        <h3>Build practical skills</h3>
+        <p>
+          Gain experience in community organising, health awareness, media,
+          technology and project delivery.
+        </p>
+      </article>
+
+      <article>
+        <span>03</span>
+        <h3>Grow your network</h3>
+        <p>
+          Work alongside trustees, partners, healthcare workers and other
+          young change makers across Nigeria.
+        </p>
+      </article>
+
+      <article>
+        <span>04</span>
+        <h3>Be recognised</h3>
+        <p>
+          Active volunteers receive certificates and references for the work
+          they contribute to the foundation.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============ FORM ============ -->
+
+<section class="apply">
+
+  <div class="apply-grid wrap">
+
+    <div class="intro">
+
+      <span class="eyebrow">JOIN US</span>
+
+      <h2>Tell us how you would like to help.</h2>
+
+      <p>
+        Fill in the form and our volunteer coordinator will reach out with
+        the next steps and upcoming activities.
+      </p>
+
+      <a
+        class="channel"
+        [href]="site.links.whatsappChannel"
+        target="_blank"
+        rel="noopener"
+      >
+        <strong>Join our WhatsApp channel</strong>
+        <small>Get outreach dates and volunteer calls first →</small>
+      </a>
+
+    </div>
+
+    <form class="card apply-card" (ngSubmit)="submit()" #f="ngForm">
+
+      @if (!submitted()) {
+
+        <label class="field">
+          <span>Full name</span>
+          <input type="text" name="name" [(ngModel)]="form.name" required>
+        </label>
+
+        <div class="two">
+
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" [(ngModel)]="form.email" required>
+          </label>
+
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" name="phone" [(ngModel)]="form.phone" required>
+          </label>
+
+        </div>
+
+        <label class="field">
+          <span>Where are you based?</span>
+          <input
+            type="text"
+            name="location"
+            placeholder="City and state"
+            [(ngModel)]="form.location"
+            required
+          >
+        </label>
+
+        <label class="field">
+          <span>What would you like to help with?</span>
+          <select name="interest" [(ngModel)]="form.interest" required>
+            <option value="" disabled>Select an area</option>
+            @for (interest of interests; track interest) {
+              <option [value]="interest">{{ interest }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Your availability</span>
+          <input
+            type="text"
+            name="availability"
+            placeholder="e.g. weekends, 5 hours a week"
+            [(ngModel)]="form.availability"
+            required
+          >
+        </label>
+
+        <label class="field">
+          <span>Anything else we should know?</span>
+          <textarea
+            rows="5"
+            name="message"
+            placeholder="Skills, experience or why you want to join"
+            [(ngModel)]="form.message"
+          ></textarea>
+        </label>
+
+        @if (error()) {
+          <p class="notice error">{{ error() }}</p>
+        }
+
+        <button
+          type="submit"
+          class="btn primary block"
+          [disabled]="!f.valid || sending()"
+        >
+          {{ sending() ? 'Sending…' : 'Submit application' }}
+        </button>
+
+      } @else {
+
+        <div class="done">
+
+          <div class="tick">✓</div>
+
+          @if (viaMail()) {
+
+            <h2>Almost there</h2>
+
+            <p>
+              Your email app should have opened with your application ready.
+              Press send there and it reaches us. If nothing opened, email us
+              at
+              <a [href]="'mailto:' + site.contact.email">
+                {{ site.contact.email }}
+              </a>.
+            </p>
+
+          } @else {
+
+            <h2>Application received</h2>
+
+            <p>
+              Thank you for stepping forward. Our volunteer coordinator will
+              be in touch soon.
+            </p>
+
+          }
+
+          <a
+            class="btn secondary"
+            [href]="site.links.whatsappChannel"
+            target="_blank"
+            rel="noopener"
+          >
+            Join the WhatsApp channel
+          </a>
+
+          <button type="button" class="link" (click)="reset()">
+            Submit another application
+          </button>
+
+        </div>
+
+      }
+
+    </form>
+
+  </div>
+
+</section>

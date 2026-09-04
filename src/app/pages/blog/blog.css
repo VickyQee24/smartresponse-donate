@@ -1,0 +1,380 @@
+/* ---------- launch flyer + QR ---------- */
+
+.launch {
+  padding: 70px 0 10px;
+}
+
+.launch-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.launch-copy h2 {
+  font-size: clamp(1.6rem, 3.4vw, 2.15rem);
+  margin: 10px 0 16px;
+}
+
+.when {
+  display: grid;
+  gap: 2px;
+  padding: 14px 18px;
+  background: var(--pink-tint);
+  border-radius: var(--radius);
+  margin: 0 0 20px;
+}
+
+.when strong {
+  color: var(--pink-dark);
+  font-size: 1.05rem;
+}
+
+.when span {
+  color: var(--body);
+  font-size: 0.9rem;
+}
+
+.launch-copy > p {
+  color: var(--body);
+  margin: 0 0 26px;
+}
+
+.qr-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.qr {
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  background: #fff;
+}
+
+.qr-frame {
+  width: 138px;
+  height: 138px;
+  margin: 0 auto 14px;
+  border-radius: 12px;
+  background: var(--pink-tint);
+  border: 2px dashed #f0aecd;
+  display: grid;
+  place-items: center;
+  color: var(--pink-dark);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 10px;
+}
+
+.qr-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.qr small {
+  display: block;
+  color: var(--body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.qr a {
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.qr a:hover {
+  text-decoration: underline;
+}
+
+/* Donate card — a press-through link rather than a QR code. */
+.press {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  background: var(--pink-tint);
+  border-color: #f8dce9;
+}
+
+.press:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  box-shadow: var(--shadow-lg);
+}
+
+.press-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pink);
+  font-size: 26px;
+  display: grid;
+  place-items: center;
+}
+
+.press:hover strong,
+.press:hover small,
+.press:hover .press-link {
+  color: #fff;
+}
+
+.press-link {
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.flyer img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.flyer-empty {
+  aspect-ratio: 3 / 4;
+  border: 2px dashed #f0aecd;
+  border-radius: var(--radius-lg);
+  background: var(--pink-tint);
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 6px;
+  color: var(--pink-dark);
+  padding: 20px;
+}
+
+.flyer-empty small {
+  color: var(--body);
+  font-size: 0.82rem;
+}
+
+/* ---------- articles ---------- */
+
+.blog {
+  padding: 76px 0 80px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 26px;
+}
+
+.entry {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.entry:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(140deg, var(--pink) 0%, var(--pink-deep) 100%);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.entry-body {
+  padding: 26px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.entry-body small {
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.entry-body h2 {
+  font-size: 1.18rem;
+  margin: 10px 0 10px;
+}
+
+.entry-body h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.entry-body h2 a:hover {
+  color: var(--pink);
+}
+
+.entry-body p {
+  color: var(--body);
+  font-size: 0.93rem;
+  margin: 0 0 18px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 12px 0;
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+}
+
+.read {
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.read:hover {
+  letter-spacing: 0.02em;
+}
+
+/* ---------- podcast ---------- */
+
+.podcast-band {
+  background: var(--pink-tint);
+  border-top: 1px solid #f8dce9;
+  border-bottom: 1px solid #f8dce9;
+  padding: 56px 0;
+}
+
+.podcast-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.podcast-inner h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  margin: 10px 0 10px;
+}
+
+.podcast-inner p {
+  color: var(--body);
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ---------- testimonials ---------- */
+
+.testimonials {
+  padding: 84px 0 92px;
+}
+
+.t-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.t-head h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  margin: 10px 0 12px;
+}
+
+.t-head p {
+  color: var(--body);
+  margin: 0;
+}
+
+.t-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.t-card {
+  position: relative;
+  margin: 0;
+  padding: 34px 28px 28px;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.marks {
+  position: absolute;
+  top: 6px;
+  left: 22px;
+  font-size: 62px;
+  line-height: 1;
+  color: var(--pink);
+  opacity: 0.22;
+  font-family: Georgia, serif;
+}
+
+.t-card blockquote {
+  margin: 0 0 20px;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.7;
+  position: relative;
+}
+
+.t-card figcaption strong {
+  display: block;
+  font-size: 0.94rem;
+}
+
+.t-card figcaption small {
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.t-cta {
+  text-align: center;
+  margin-top: 44px;
+}
+
+.t-cta p {
+  color: var(--body);
+  margin: 0 0 16px;
+}
+
+@media (max-width: 900px) {
+  .launch-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .flyer {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 480px) {
+  .qr-row {
+    grid-template-columns: 1fr;
+  }
+}

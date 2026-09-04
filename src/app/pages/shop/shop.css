@@ -1,0 +1,426 @@
+.products {
+  padding: 72px 0 90px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+.product {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.shot {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(140deg, var(--pink-tint), #ffe6f2);
+  display: grid;
+  place-items: center;
+  color: var(--pink-dark);
+  font-weight: 700;
+  text-align: center;
+  padding: 20px;
+}
+
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px 0;
+}
+
+.gallery img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.body {
+  padding: 26px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.body h2 {
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+}
+
+.tagline {
+  color: var(--body);
+  font-size: 0.95rem;
+  margin: 0 0 18px;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  gap: 7px;
+}
+
+.features li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.9rem;
+  color: var(--body);
+}
+
+.features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.impact {
+  background: var(--pink-tint);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  color: var(--pink-deep);
+  margin: 0 0 18px;
+}
+
+.pricing {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+.pricing strong {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--ink);
+}
+
+.pricing small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.pricing .bulk strong {
+  color: var(--pink);
+}
+
+/* ---------- order panel ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 8, 16, 0.55);
+  z-index: 90;
+  animation: fade 0.2s ease;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(460px, 100%);
+  background: #fff;
+  z-index: 100;
+  padding: 34px 30px 44px;
+  overflow-y: auto;
+  box-shadow: -14px 0 44px rgba(0, 0, 0, 0.16);
+  animation: slide 0.28s ease;
+}
+
+.panel h2 {
+  font-size: 1.35rem;
+  margin: 0 0 6px;
+  padding-right: 32px;
+}
+
+.panel > .hint {
+  margin: 0 0 22px;
+}
+
+.close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--body);
+  cursor: pointer;
+}
+
+.close:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.qty-row > span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.qty button {
+  width: 40px;
+  height: 42px;
+  border: 0;
+  background: var(--surface-alt);
+  font-size: 18px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.qty button:hover {
+  background: var(--pink);
+  color: #fff;
+}
+
+.qty input {
+  width: 72px;
+  height: 42px;
+  border: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.qty input:focus {
+  outline: none;
+}
+
+.bulk-hint {
+  margin: 0 0 18px;
+  color: var(--pink);
+}
+
+.panel .notice {
+  margin: 0 0 18px;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: var(--pink-tint);
+  border-radius: var(--radius);
+  margin: 6px 0 18px;
+}
+
+.total span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.total strong {
+  font-size: 1.4rem;
+  color: var(--pink-dark);
+}
+
+.secure {
+  text-align: center;
+  margin: 14px 0 0;
+}
+
+/* ---------- payment method ---------- */
+
+.pay-heading {
+  font-size: 0.95rem;
+  margin: 22px 0 10px;
+}
+
+.methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.method {
+  text-align: left;
+  padding: 14px 15px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.method:hover:not(:disabled) {
+  border-color: var(--pink);
+}
+
+.method.on {
+  border-color: var(--pink);
+  background: var(--pink-tint);
+}
+
+.method:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.method strong {
+  display: block;
+  font-size: 0.92rem;
+  margin-bottom: 3px;
+}
+
+.method small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.method.on strong {
+  color: var(--pink-dark);
+}
+
+/* ---------- bank details ---------- */
+
+.bank-box {
+  border: 1px solid #f8dce9;
+  background: var(--pink-tint);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.bank-head {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f3cede;
+}
+
+.bank-head small {
+  display: block;
+  color: var(--body);
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.bank-head strong {
+  display: block;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.acct {
+  background: #fff;
+  border-radius: 10px;
+  padding: 11px 13px;
+  margin-bottom: 8px;
+}
+
+.acct-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.acct-top .cur {
+  font-weight: 800;
+  color: var(--pink);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.acct-top .num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+}
+
+.acct-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 3px;
+}
+
+.acct-foot small {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+/* Repeated on every account so nobody transfers to the wrong bank. */
+.bank-name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: right;
+}
+
+.acct-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  margin-top: 4px;
+  border-top: 1px solid #f3cede;
+}
+
+.acct-total small {
+  font-size: 0.78rem;
+  color: var(--body);
+}
+
+.acct-total strong {
+  font-size: 1.15rem;
+  color: var(--pink-dark);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide {
+  from { transform: translateX(28px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 560px) {
+  .panel {
+    padding: 30px 20px 40px;
+  }
+}

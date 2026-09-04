@@ -1,0 +1,153 @@
+<section class="ty">
+
+  <div class="wrap-narrow">
+
+    <div class="mark">♥</div>
+
+    <span class="eyebrow">THANK YOU</span>
+
+    @if (isOrder()) {
+      <h1>Your order is in.</h1>
+    } @else {
+      <h1>Thank you for your gift.</h1>
+    }
+
+    @if (isTransfer()) {
+
+      <p class="lead">
+        Thank you for letting us know. Once your transfer lands in the
+        account we will confirm it and follow up with you directly.
+      </p>
+
+    } @else if (isOrder()) {
+
+      <p class="lead">
+        Your payment went through and our team will contact you to arrange
+        delivery.
+      </p>
+
+    } @else {
+
+      <p class="lead">
+        Your support helps girls stay in school, protects dignity and puts
+        safety within reach of young people who need it.
+      </p>
+
+    }
+
+    <!-- summary -->
+
+    @if (item() || amountLabel() || ref()) {
+
+      <div class="summary">
+
+        @if (item()) {
+          <div class="row">
+            <span>Item</span>
+            <strong>{{ item() }}</strong>
+          </div>
+        }
+
+        @if (qty()) {
+          <div class="row">
+            <span>Quantity</span>
+            <strong>{{ qty() }}</strong>
+          </div>
+        }
+
+        @if (amountLabel()) {
+          <div class="row">
+            <span>Amount</span>
+            <strong>{{ amountLabel() }}</strong>
+          </div>
+        }
+
+        @if (ref()) {
+          <div class="row">
+            <span>Reference</span>
+            <strong>{{ ref() }}</strong>
+          </div>
+        }
+
+      </div>
+
+    }
+
+    <!-- what happens next -->
+
+    <div class="next">
+
+      <h2>What happens next</h2>
+
+      @if (isTransfer()) {
+
+        <ol>
+          <li>
+            Send your proof of payment to
+            <a [href]="'mailto:' + site.contact.email">
+              {{ site.contact.email }}
+            </a>
+            so we can match it to your name.
+          </li>
+          <li>We confirm the transfer against our account.</li>
+          @if (isOrder()) {
+            <li>Our team contacts you to arrange delivery.</li>
+          } @else {
+            <li>We send you a receipt for your records.</li>
+          }
+        </ol>
+
+        <p class="acct-hint">
+          Transferring to
+          <strong>{{ site.bank.name }}</strong> —
+          <strong>{{ site.bank.accounts[0].number }}</strong> (NGN).
+          <a routerLink="/donate" fragment="bank">See all accounts →</a>
+        </p>
+
+      } @else {
+
+        <ol>
+          <li>A receipt is on its way to the email address you gave us.</li>
+          @if (isOrder()) {
+            <li>Our team contacts you to arrange delivery.</li>
+          } @else {
+            <li>
+              We put your gift to work through the Save Her Dignity
+              Campaign.
+            </li>
+          }
+          <li>You can follow the impact on our WhatsApp channel.</li>
+        </ol>
+
+      }
+
+    </div>
+
+    <!-- keep going -->
+
+    <div class="actions">
+
+      <a
+        class="btn primary"
+        [href]="site.links.whatsappChannel"
+        target="_blank"
+        rel="noopener"
+      >
+        Join our WhatsApp channel
+      </a>
+
+      <a class="btn secondary" routerLink="/blog">Read our stories</a>
+
+    </div>
+
+    <p class="back">
+      <a routerLink="/">← Back to home</a>
+    </p>
+
+    <p class="reg">
+      {{ site.organisation.longName }} · {{ site.organisation.registration }}
+    </p>
+
+  </div>
+
+</section>
