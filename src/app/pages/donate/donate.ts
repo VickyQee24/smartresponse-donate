@@ -25,7 +25,8 @@ export class Donate {
 
   frequency = signal<Frequency>('once');
   amount = signal<number>(10000);
-  customAmount = signal<string>('');
+  /** A number input hands back a number, an empty field hands back null. */
+  customAmount = signal<string | number | null>('');
 
   name = signal('');
   email = signal('');
@@ -38,9 +39,15 @@ export class Donate {
 
   /** A typed amount always wins over the selected preset. */
   readonly effectiveAmount = computed(() => {
-    const typed = Number(this.customAmount());
+    const raw = this.customAmount();
 
-    return this.customAmount().trim() !== '' && typed > 0
+    if (raw === null || raw === undefined || String(raw).trim() === '') {
+      return this.amount();
+    }
+
+    const typed = Number(raw);
+
+    return Number.isFinite(typed) && typed > 0
       ? Math.floor(typed)
       : this.amount();
   });
@@ -126,10 +133,13 @@ export class Donate {
     const payload = await response.json().catch(() => ({}));
 
     if (!response.ok || !payload.plan) {
+      // Paystack's own wording ("Invalid key") means nothing to a donor, so
+      // keep the detail in the console and show something actionable.
+      console.error('Recurring setup failed:', response.status, payload);
+
       throw new Error(
-        payload.error ||
-        'We could not set up that recurring gift. Please try a single gift, ' +
-        'or use the bank transfer details.'
+        'We could not set up a repeating gift just now. You can still give ' +
+        'once, or use the bank transfer details beside this form.'
       );
     }
 
