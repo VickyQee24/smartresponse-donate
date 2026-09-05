@@ -13,7 +13,15 @@
         <h1>{{ article.title }}</h1>
 
         <div class="byline">
-          <span class="avatar">{{ article.author.charAt(0) }}</span>
+          @if (hasPhoto(article.authorPhoto)) {
+            <img
+              class="avatar photo"
+              [src]="article.authorPhoto"
+              [alt]="article.author"
+              (error)="onPhotoError(article.authorPhoto)">
+          } @else {
+            <span class="avatar">{{ article.author.charAt(0) }}</span>
+          }
           <div>
             <strong>{{ article.author }}</strong>
             <small>{{ article.authorRole }} · {{ article.readTime }}</small>

@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { SITE } from '../../core/site-config';
@@ -22,4 +22,15 @@ export class BlogPost {
   readonly others = computed(() =>
     BLOG_POSTS.filter(post => post.slug !== this.slug())
   );
+
+  /** Portraits that failed to load, so we fall back to an initial. */
+  private missing = signal<ReadonlySet<string>>(new Set());
+
+  hasPhoto(photo: string): boolean {
+    return photo.length > 0 && !this.missing().has(photo);
+  }
+
+  onPhotoError(photo: string): void {
+    this.missing.update(set => new Set(set).add(photo));
+  }
 }

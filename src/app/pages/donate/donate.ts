@@ -36,50 +36,19 @@ export class Donate {
 
   readonly recurring = computed(() => this.frequency() !== 'once');
 
-  /**
-   * Recurring giving runs on Paystack Plans, which carry a fixed amount, so
-   * only the tiers that have a plan code configured can be offered.
-   */
-  readonly tiers = computed(() => {
-    const freq = this.frequency();
-
-    return freq === 'once'
-      ? []
-      : SITE.paystack.plans[freq].filter(tier => tier.code.length > 0);
-  });
-
-  /** Custom input wins for one-off gifts; recurring is tier-only. */
+  /** A typed amount always wins over the selected preset. */
   readonly effectiveAmount = computed(() => {
-    if (this.recurring()) {
-      return this.amount();
-    }
-
     const typed = Number(this.customAmount());
 
     return this.customAmount().trim() !== '' && typed > 0
-      ? typed
+      ? Math.floor(typed)
       : this.amount();
   });
-
-  readonly planCode = computed(() => {
-    if (!this.recurring()) {
-      return '';
-    }
-
-    const match = this.tiers().find(tier => tier.amount === this.amount());
-    return match ? match.code : '';
-  });
-
-  /** True when a recurring frequency has no usable plans configured yet. */
-  readonly planMissing = computed(() =>
-    this.recurring() && this.tiers().length === 0
-  );
 
   readonly canGive = computed(() =>
     this.effectiveAmount() >= 100 &&
     this.email().includes('@') &&
-    !this.processing() &&
-    (!this.recurring() || this.planCode() !== '')
+    !this.processing()
   );
 
   format(value: number): string {
@@ -91,20 +60,8 @@ export class Donate {
     this.customAmount.set('');
   }
 
-  /** Switching frequency snaps the amount onto a valid tier. */
   setFrequency(freq: Frequency): void {
     this.frequency.set(freq);
-    this.customAmount.set('');
-
-    const tiers = this.tiers();
-
-    if (freq !== 'once' && tiers.length > 0) {
-      const stillValid = tiers.some(tier => tier.amount === this.amount());
-
-      if (!stillValid) {
-        this.amount.set(tiers[0].amount);
-      }
-    }
   }
 
   frequencyLabel(): string {
@@ -123,10 +80,16 @@ export class Donate {
     this.processing.set(true);
 
     try {
+      // Recurring gifts need a Paystack Plan for this exact amount, which
+      // only the server can mint.
+      const plan = this.recurring()
+        ? await this.resolvePlan()
+        : undefined;
+
       const result = await this.paystack.checkout({
         email: this.email(),
         amount: this.effectiveAmount(),
-        plan: this.planCode() || undefined,
+        plan,
         metadata: {
           donor_name: this.name(),
           frequency: this.frequency(),
@@ -144,6 +107,33 @@ export class Donate {
     } finally {
       this.processing.set(false);
     }
+  }
+
+  /**
+   * Asks the server for a plan code matching the chosen amount + frequency.
+   * Throws with a readable message if recurring is not set up yet.
+   */
+  private async resolvePlan(): Promise<string> {
+    const response = await fetch('/api/paystack-plan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: this.effectiveAmount(),
+        frequency: this.frequency()
+      })
+    });
+
+    const payload = await response.json().catch(() => ({}));
+
+    if (!response.ok || !payload.plan) {
+      throw new Error(
+        payload.error ||
+        'We could not set up that recurring gift. Please try a single gift, ' +
+        'or use the bank transfer details.'
+      );
+    }
+
+    return payload.plan;
   }
 
   copied = signal('');

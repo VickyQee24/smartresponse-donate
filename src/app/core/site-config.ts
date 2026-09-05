@@ -9,14 +9,6 @@ export interface BankAccount {
   number: string;
 }
 
-/** One recurring giving tier, backed by a Paystack Plan. */
-export interface PlanTier {
-  /** Amount in naira. Must match the amount on the Paystack Plan. */
-  amount: number;
-  /** The plan's PLN_... code. Empty hides the tier. */
-  code: string;
-}
-
 export const SITE = {
 
   organisation: {
@@ -41,8 +33,8 @@ export const SITE = {
       'https://whatsapp.com/channel/0029VbCvcK084OmJn15K702e',
     podcast:
       'https://open.spotify.com/show/033HGtZsDcyVs5lPBQR9MQ',
-    // TODO: replace with the live web app URL that the install QR points to
-    appDownload: '',
+    /** The web app the install QR code points to. */
+    appDownload: 'https://112smartresponseafrica.com.ng',
     instagram: 'https://instagram.com/smartresponse_africa',
     facebook: 'https://facebook.com/smartresponse_africa',
     x: 'https://x.com/smartresponse_',
@@ -92,35 +84,15 @@ export const SITE = {
      * Paystack PUBLIC key (pk_test_... or pk_live_...). Safe to ship in the
      * browser bundle. Nothing charges until this is filled in.
      */
-    publicKey: '',
+    // TEST key — swap for the pk_live_... key before going live.
+    publicKey: 'pk_test_88fe420fc9058ba41ca0ff5ef9f3ac1fd79e162a'
 
     /**
-     * A Paystack Plan carries a FIXED amount, so recurring giving is offered
-     * as tiers. For each amount below, create a Plan in the Paystack
-     * dashboard (Recurring -> Plans) with the matching interval and amount,
-     * then paste its PLN_... code here.
-     *
-     * Tiers with an empty code are hidden from the site, so you can launch
-     * with only the ones you have created.
+     * Recurring giving needs a Paystack Plan for the chosen amount, which is
+     * minted on demand by api/paystack-plan.js. That function reads the
+     * SECRET key from the PAYSTACK_SECRET_KEY environment variable in Vercel
+     * — never put the secret key in this file, it ships to the browser.
      */
-    plans: <Record<'weekly' | 'monthly' | 'yearly', PlanTier[]>>{
-      weekly: [
-        { amount: 1000, code: '' },
-        { amount: 2500, code: '' },
-        { amount: 5000, code: '' }
-      ],
-      monthly: [
-        { amount: 2000, code: '' },
-        { amount: 5000, code: '' },
-        { amount: 10000, code: '' },
-        { amount: 25000, code: '' }
-      ],
-      yearly: [
-        { amount: 25000, code: '' },
-        { amount: 50000, code: '' },
-        { amount: 100000, code: '' }
-      ]
-    }
   }
 } as const;
 

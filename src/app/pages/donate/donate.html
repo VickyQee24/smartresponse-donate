@@ -120,68 +120,41 @@
 
           <legend>Choose an amount</legend>
 
-          @if (recurring()) {
+          <div class="amounts">
 
-            <!-- Recurring runs on Paystack Plans, which are fixed amounts. -->
+            @for (preset of presets; track preset) {
 
-            @if (tiers().length) {
-
-              <div class="amounts">
-
-                @for (tier of tiers(); track tier.code) {
-
-                  <button
-                    type="button"
-                    class="amount"
-                    [class.on]="amount() === tier.amount"
-                    (click)="amount.set(tier.amount)"
-                  >
-                    {{ format(tier.amount) }}
-                  </button>
-
-                }
-
-              </div>
-
-              <p class="hint tier-note">
-                Recurring gifts are set amounts. Choose
-                <strong>Give once</strong> to enter any amount you like.
-              </p>
+              <button
+                type="button"
+                class="amount"
+                [class.on]="effectiveAmount() === preset"
+                (click)="selectPreset(preset)"
+              >
+                {{ format(preset) }}
+              </button>
 
             }
 
-          } @else {
+          </div>
 
-            <div class="amounts">
+          <label class="field custom">
+            <span>Or enter your own amount (₦)</span>
+            <input
+              type="number"
+              min="100"
+              step="100"
+              placeholder="e.g. 7500"
+              [ngModel]="customAmount()"
+              (ngModelChange)="customAmount.set($event)"
+              name="customAmount"
+            >
+          </label>
 
-              @for (preset of presets; track preset) {
-
-                <button
-                  type="button"
-                  class="amount"
-                  [class.on]="effectiveAmount() === preset"
-                  (click)="selectPreset(preset)"
-                >
-                  {{ format(preset) }}
-                </button>
-
-              }
-
-            </div>
-
-            <label class="field custom">
-              <span>Or enter your own amount (₦)</span>
-              <input
-                type="number"
-                min="100"
-                step="100"
-                placeholder="e.g. 7500"
-                [ngModel]="customAmount()"
-                (ngModelChange)="customAmount.set($event)"
-                name="customAmount"
-              >
-            </label>
-
+          @if (recurring()) {
+            <p class="hint tier-note">
+              You will be charged {{ format(effectiveAmount()) }}
+              {{ frequencyLabel() }}. You can cancel at any time.
+            </p>
           }
 
         </fieldset>
@@ -230,18 +203,12 @@
             bank transfer details beside this form — every transfer reaches
             us the same way.
           </p>
-        } @else if (planMissing()) {
-          <p class="notice warn">
-            {{ frequency() }} giving is not switched on yet. Choose
-            <strong>Give once</strong>, pick another frequency, or use the
-            bank transfer details beside this form.
-          </p>
         }
 
         <button
           type="button"
           class="btn primary block"
-          [disabled]="!canGive() || !paystackReady || planMissing()"
+          [disabled]="!canGive() || !paystackReady"
           (click)="give()"
         >
           {{ processing()

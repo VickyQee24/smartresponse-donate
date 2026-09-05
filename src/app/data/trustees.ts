@@ -49,13 +49,28 @@ export const TRUSTEES: Trustee[] = [
     name: 'Olagunju Damilare Elijah',
     role: 'Trustee',
     initials: 'OE',
-    // TODO: add public/images/team/damilare.jpg
-    photo: '',
+    photo: '/images/team/damilare.jpg',
     bio: [
       `Trustee of the Smart Response Youth Foundation and a contributor to ` +
       `the foundation's writing on dignity, youth innovation and justice.`
     ]
-  }
+  },
 
-  // TODO: Donald — photo and short bio still to come from Miss Vicky.
+  {
+    name: 'Ekwelogu Donald',
+    role: 'Trustee',
+    initials: 'ED',
+    photo: '/images/team/donald.jpg',
+    bio: [
+      `I'm Ekwelogu Donald, a frontend developer based in Lagos. I built ` +
+      `the frontend of the Smart Response Youth Foundation website to help ` +
+      `share our mission and connect with more young people.`,
+
+      `As a young Trustee, I believe in empowering youth to become positive ` +
+      `change makers. I support Smart Response with digital strategy and ` +
+      `visibility so we can expand our work in education, community ` +
+      `outreach and humanitarian initiatives, while upholding transparency ` +
+      `and good governance.`
+    ]
+  }
 ];

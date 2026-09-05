@@ -11,6 +11,8 @@ export interface BlogPost {
   excerpt: string;
   author: string;
   authorRole: string;
+  /** Path under public/images/team/. Empty renders an initial avatar. */
+  authorPhoto: string;
   readTime: string;
   body: Block[];
 }
@@ -35,6 +37,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'built on people looking out for one another.',
     author: 'Victoria Chidinma Chukwu',
     authorRole: 'Founder / Trustee Chairperson, SRYF',
+    authorPhoto: '/images/team/victoria.jpg',
     readTime: '8 min read',
     body: [
       { kind: 'p', text: `A strong community is built on more than roads, buildings, schools, and businesses. It is built on people looking out for one another. When individuals, families, institutions, government agencies, emergency services, and technology work together, communities become safer, healthier, and more resilient.` },
@@ -101,6 +104,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'creators, innovators and change-makers of today.',
     author: 'Mariam Marina',
     authorRole: 'Contributor',
+    authorPhoto: '/images/team/mariam.jpg',
     readTime: '9 min read',
     body: [
       { kind: 'p', text: `Young people are often described as the leaders of tomorrow. But the truth is that young people are not only the leaders of tomorrow; they are also the creators, innovators, problem-solvers, and change-makers of today.` },
@@ -191,6 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'given dignity, they redesign the future so everyone can stand tall in it.',
     author: 'Olagunju Damilare Elijah',
     authorRole: 'Trustee, SRYF',
+    authorPhoto: '/images/team/damilare.jpg',
     readTime: '7 min read',
     body: [
       { kind: 'p', text: `In Ikeja, Lagos, there was a small tech hub tucked behind LTV on Lateef Jakande Road. The walls were painted bright yellow, but the paint was peeling. Inside, 19-year-old Tolu fixed old phones and laptops for people in the neighbourhood.` },
