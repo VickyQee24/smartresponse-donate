@@ -6,6 +6,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 26px;
+  /* Cards have very different feature counts: let each size to its own
+     content instead of stretching the short one to match the tall one. */
+  align-items: start;
 }
 
 .product {

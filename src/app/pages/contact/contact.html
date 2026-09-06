@@ -31,7 +31,9 @@
 
     <div class="contact-item">
       <strong>Phone</strong>
-      <span>{{ site.contact.phone }}</span>
+      <a [href]="'tel:' + site.contact.phoneLink">
+        {{ site.contact.phone }}
+      </a>
     </div>
 
     <div class="contact-item">

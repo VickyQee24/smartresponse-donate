@@ -23,8 +23,9 @@ export const SITE = {
 
   contact: {
     email: 'info@112smartresponseafrica.com.ng',
-    // TODO: replace with the live phone number
-    phone: '+234 XXX XXX XXXX',
+    phone: '+234 708 962 7576',
+    /** Same number, digits only, for tel: links. */
+    phoneLink: '+2347089627576',
     location: 'Lagos, Nigeria'
   },
 
@@ -76,7 +77,7 @@ export const SITE = {
    * the message pre-filled, so nothing is lost.
    */
   forms: {
-    web3formsKey: ''
+    web3formsKey: '7a5dc359-a89b-4874-84f9-574c5b76c40a'
   },
 
   paystack: {
@@ -84,8 +85,9 @@ export const SITE = {
      * Paystack PUBLIC key (pk_test_... or pk_live_...). Safe to ship in the
      * browser bundle. Nothing charges until this is filled in.
      */
-    // TEST key — swap for the pk_live_... key before going live.
-    publicKey: 'pk_test_88fe420fc9058ba41ca0ff5ef9f3ac1fd79e162a'
+    // LIVE key — real money. The matching sk_live_... secret must be set as
+    // PAYSTACK_SECRET_KEY in Vercel, or recurring giving will fail.
+    publicKey: 'pk_live_7234f0e1dfb6f0fe0706fd19d432f63a6db17172'
 
     /**
      * Recurring giving needs a Paystack Plan for the chosen amount, which is
